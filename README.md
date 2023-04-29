@@ -18,45 +18,46 @@ Plot the images using plt.imshow.
 ## PROGRAM:
 
 ``` 
-# Import the necessary packages:
+# Import the necessary packages
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Create the Text using cv2.putText:
+# Create the Text using cv2.putText
 text_image = np.zeros((100,440),dtype = 'uint8')
+img=cv2.cvtColor(text_image,cv2.COLOR_BGR2RGB)
 font = cv2.FONT_HERSHEY_SIMPLEX = 3
-cv2.putText(text_image,"Rithiga Sri.B",(5,70),font,2,(255),5,cv2.LINE_AA)
-plt.title("Original Image")
-plt.imshow(text_image,'magma')
-plt.axis('off')
+cv2.putText(img,"Rithiga Sri.B",(5,70),font,2,(0,0,255),5,cv2.LINE_AA)
+cv2.imshow("Original Image",img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
-# Create the structuring element:
+# Create the structuring element
 kernel = cv2.getStructuringElement(cv2.MORPH_CROSS,(7,7))
 
-# Erode the image:
-image_erode = cv2.erode(text_image,kernel)
-plt.title("Eroded Image")
-plt.imshow(image_erode,'magma')
-plt.axis('off')
+# Erode the image
+image_erode = cv2.erode(img,kernel)
+cv2.imshow("Eroded Image",image_erode)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
-# Dilate the image:
-image_dilate = cv2.dilate(text_image,kernel)
-plt.title("Dilated Image")
-plt.imshow(image_dilate,'magma')
-plt.axis('off')
+# Dilate the image
+image_dilate = cv2.dilate(img,kernel)
+cv2.imshow("Dilated Image",image_dilate)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 ```
 ## OUTPUT:
 
 ### Display the input Image:  
-![image](https://user-images.githubusercontent.com/93427256/235285185-1ee3c6f8-6c66-40f9-bc6c-716252199a35.png)
+![image](https://user-images.githubusercontent.com/93427256/235285749-002f73f7-3406-4739-83b9-c3e067dc998e.png)
 
 ### Display the Eroded Image:  
-![image](https://user-images.githubusercontent.com/93427256/235285213-955c0fed-102b-44aa-9caa-aef0c70e37c7.png)
+![image](https://user-images.githubusercontent.com/93427256/235285775-6c739cc9-147b-4b73-85ff-7e14fed1d3af.png)
 
 ### Display the Dilated Image:  
-![image](https://user-images.githubusercontent.com/93427256/235285226-a6df276b-71e1-4ec9-9584-9b7b5712e6ee.png)
+![image](https://user-images.githubusercontent.com/93427256/235285826-c29d2863-9f5a-47f2-b0ab-c5fa5cfb9f5e.png)
 
 ## RESULT:
 Thus the generated text image is eroded and dilated using python and OpenCV.
